@@ -54,36 +54,8 @@ jobs:
         ls -l openwrt/target/linux/x86/
         echo "==========================="
         
-        echo "CONFIG_EMBEDDED=y" >> openwrt/target/linux/x86/config-6.6
-        echo "CONFIG_IA32_EMULATION=y" >> openwrt/target/linux/x86/config-6.6
-        echo "CONFIG_X86_X32=y" >> openwrt/target/linux/x86/config-6.6
-        echo "CONFIG_X86_32=y" >> openwrt/target/linux/x86/config-6.6
-        echo "CONFIG_X86_32_COMPAT=y" >> openwrt/target/linux/x86/config-6.6
-        echo "CONFIG_COMPAT=y" >> openwrt/target/linux/x86/config-6.6
-        echo "CONFIG_X86_PAE" >> openwrt/target/linux/x86/config-6.6
-        echo "CONFIG_QEMU_EMULATOR" >> openwrt/target/linux/x86/config-6.6
-        echo "CONFIG_ARCH_ENABLE_MEMORY_HOTPLUG=y" >> openwrt/target/linux/x86/config-6.6
-        echo "CONFIG_BINFMT_ELF_CORE=y" >> openwrt/target/linux/x86/config-6.6
-        echo "CONFIG_BINFMT_MISC=y" >> openwrt/target/linux/x86/config-6.6
-        echo "CONFIG_BINFMT_ELF=y" >> openwrt/target/linux/x86/config-6.6
-        echo "CONFIG_COMPAT_BINFMT_ELF=y" >> openwrt/target/linux/x86/config-6.6
-        echo "CONFIG_BINFMT_SCRIPT=y" >> openwrt/target/linux/x86/config-6.6
-        echo "CONFIG_X86_MSR=y" >> openwrt/target/linux/x86/config-6.6
-        echo "CONFIG_EMBEDDED=y" >> openwrt/target/linux/x86/config-6.12
-        echo "CONFIG_IA32_EMULATION=y" >> openwrt/target/linux/x86/config-6.12
-        echo "CONFIG_X86_X32=y" >> openwrt/target/linux/x86/config-6.12
-        echo "CONFIG_X86_32=y" >> openwrt/target/linux/x86/config-6.12
-        echo "CONFIG_X86_32_COMPAT=y" >> openwrt/target/linux/x86/config-6.12
-        echo "CONFIG_COMPAT=y" >> openwrt/target/linux/x86/config-6.12
-        echo "CONFIG_X86_PAE" >> openwrt/target/linux/x86/config-6.12
-        echo "CONFIG_QEMU_EMULATOR" >> openwrt/target/linux/x86/config-6.12
-        echo "CONFIG_ARCH_ENABLE_MEMORY_HOTPLUG=y" >> openwrt/target/linux/x86/config-6.12
-        echo "CONFIG_BINFMT_ELF_CORE=y" >> openwrt/target/linux/x86/config-6.12
-        echo "CONFIG_BINFMT_MISC=y" >> openwrt/target/linux/x86/config-6.12
-        echo "CONFIG_BINFMT_ELF=y" >> openwrt/target/linux/x86/config-6.12
-        echo "CONFIG_COMPAT_BINFMT_ELF=y" >> openwrt/target/linux/x86/config-6.12
-        echo "CONFIG_BINFMT_SCRIPT=y" >> openwrt/target/linux/x86/config-6.12
-        echo "CONFIG_X86_MSR=y" >> openwrt/target/linux/x86/config-6.12
+
+        
         cat openwrt/target/linux/x86/config-6.6
         echo "==========debug============"
         
@@ -112,8 +84,8 @@ jobs:
         echo "==========================="
         ls -l ../
         echo "==========================="
-        apt -y install tree
-        cat openwrt/.config | grep BINFMT
+
+        cat .config | grep BINFMT
         echo "==========================="
-        cat openwrt/.config.buildinfo | grep BINFMT
+        cat .config.buildinfo | grep BINFMT
         
