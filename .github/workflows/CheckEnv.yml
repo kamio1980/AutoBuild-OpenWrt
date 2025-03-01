@@ -101,7 +101,7 @@ jobs:
         pwd
         ls -l
         echo "==========================="
-        cat config | grep BINFMT
+        cat openwrt/.config | grep BINFMT
         echo "==========================="
-        cat config.buildinfo | grep BINFMT
+        cat openwrt/.config.buildinfo | grep BINFMT
         
