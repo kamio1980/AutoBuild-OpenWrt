@@ -133,7 +133,7 @@ jobs:
     - name: Verify Kernel Config for binfmt_misc (Before Build)
       working-directory: ./openwrt
       run: |
-        cat .config | grep BINFMT
+        grep -E "CONFIG_BINFMT_MISC|CONFIG_BINFMT_ELF|CONFIG_COMPAT_BINFMT_ELF|CONFIG_BINFMT_ELF_CORE|CONFIG_BINFMT_AOUT|CONFIG_BINFMT_SCRIPT|CONFIG_IA32_EMULATION|CONFIG_X86_X32|CONFIG_X86_32|CONFIG_COMPAT|CONFIG_X86_PAE|CONFIG_X86_16BIT|CONFIG_MULTIARCH|CONFIG_ARCH_X86|CONFIG_QEMU_EMULATOR|CONFIG_X86_TSC|CONFIG_X86_MSR" .config || true
 
     - name: Build firmware
       working-directory: ./openwrt
@@ -144,7 +144,7 @@ jobs:
     - name: Verify Kernel Config for binfmt_misc (After Build)
       working-directory: ./openwrt
       run: |
-        cat .config | grep BINFMT
+        grep -E "CONFIG_BINFMT_MISC|CONFIG_BINFMT_ELF|CONFIG_COMPAT_BINFMT_ELF|CONFIG_BINFMT_ELF_CORE|CONFIG_BINFMT_AOUT|CONFIG_BINFMT_SCRIPT|CONFIG_IA32_EMULATION|CONFIG_X86_X32|CONFIG_X86_32|CONFIG_COMPAT|CONFIG_X86_PAE|CONFIG_X86_16BIT|CONFIG_MULTIARCH|CONFIG_ARCH_X86|CONFIG_QEMU_EMULATOR|CONFIG_X86_TSC|CONFIG_X86_MSR" .config || true
 
     - name : Upload artifact
       uses: actions/upload-artifact@master
