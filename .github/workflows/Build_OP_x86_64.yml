@@ -116,10 +116,22 @@ jobs:
 
     - name: Force Enable binfmt_misc in Kernel
       run: |
+        pwd
+        echo "CONFIG_EMBEDDED=y" >> openwrt/target/linux/x86/config-*
+        echo "CONFIG_IA32_EMULATION=y" >> openwrt/target/linux/x86/config-*
+        echo "CONFIG_X86_X32=y" >> openwrt/target/linux/x86/config-*
+        echo "CONFIG_X86_32=y" >> openwrt/target/linux/x86/config-*
+        echo "CONFIG_X86_32_COMPAT=y" >> openwrt/target/linux/x86/config-*
+        echo "CONFIG_COMPAT=y" >> openwrt/target/linux/x86/config-*
+        echo "CONFIG_X86_PAE" >> openwrt/target/linux/x86/config-*
+        echo "CONFIG_QEMU_EMULATOR" >> openwrt/target/linux/x86/config-*
+        echo "CONFIG_ARCH_ENABLE_MEMORY_HOTPLUG=y" >> openwrt/target/linux/x86/config-*
+        echo "CONFIG_BINFMT_ELF_CORE=y" >> openwrt/target/linux/x86/config-*
         echo "CONFIG_BINFMT_MISC=y" >> openwrt/target/linux/x86/config-*
         echo "CONFIG_BINFMT_ELF=y" >> openwrt/target/linux/x86/config-*
         echo "CONFIG_COMPAT_BINFMT_ELF=y" >> openwrt/target/linux/x86/config-*
         echo "CONFIG_BINFMT_SCRIPT=y" >> openwrt/target/linux/x86/config-*
+        echo "CONFIG_X86_MSR=y" >> openwrt/target/linux/x86/config-*
 
     - name: Configuration Customization - Build_x86_64
       env:
