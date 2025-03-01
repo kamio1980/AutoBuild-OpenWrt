@@ -103,10 +103,16 @@ jobs:
         ls -l
         echo "==========================="
         ls config/
+        echo "==========================="
         ls -l target/linux/x86/
-        echo "==========================="
+        echo "==========6.6============="
         cat target/linux/x86/config-6.6 | grep BINFMT
+        echo "==========6.12=============="
+        cat target/linux/x86/config-6.12 | grep BINFMT
         echo "==========================="
+        ls -l ../
+        echo "==========================="
+        apt -y install tree
         cat openwrt/.config | grep BINFMT
         echo "==========================="
         cat openwrt/.config.buildinfo | grep BINFMT
