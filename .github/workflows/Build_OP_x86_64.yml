@@ -146,6 +146,9 @@ jobs:
         echo "CONFIG_COMPAT_BINFMT_ELF=y" >> openwrt/target/linux/x86/config-6.12
         echo "CONFIG_BINFMT_SCRIPT=y" >> openwrt/target/linux/x86/config-6.12
         echo "CONFIG_X86_MSR=y" >> openwrt/target/linux/x86/config-6.12
+        echo "================print binfmt==============="
+        cat target/linux/x86/config-6.6 | grep BINFMT
+        echo "==================end print================"
 
     - name: Configuration Customization - Build_x86_64
       env:
