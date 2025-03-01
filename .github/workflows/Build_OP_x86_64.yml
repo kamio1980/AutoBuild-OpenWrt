@@ -116,6 +116,7 @@ jobs:
 
     - name: Force Enable binfmt_misc in Kernel
       run: |
+        ls
         pwd
         echo "CONFIG_EMBEDDED=y" >> openwrt/target/linux/x86/config-*
         echo "CONFIG_IA32_EMULATION=y" >> openwrt/target/linux/x86/config-*
