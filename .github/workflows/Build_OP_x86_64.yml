@@ -120,7 +120,8 @@ jobs:
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x ./customize.sh && ./customize.sh
-        cd openwrt && make defconfig
+        cd openwrt
+        make oldconfig
         
     - name: Download package
       working-directory: ./openwrt
@@ -129,11 +130,21 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
+    - name: Verify Kernel Config for binfmt_misc (Before Build)
+      working-directory: ./openwrt
+      run: |
+        cat .config | grep BINFMT
+
     - name: Build firmware
       working-directory: ./openwrt
       run: |
         echo -e "$(nproc) thread build."
         make -j$(nproc) V=s
+
+    - name: Verify Kernel Config for binfmt_misc (After Build)
+      working-directory: ./openwrt
+      run: |
+        cat .config | grep BINFMT
 
     - name : Upload artifact
       uses: actions/upload-artifact@master
