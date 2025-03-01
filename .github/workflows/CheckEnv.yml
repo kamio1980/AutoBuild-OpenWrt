@@ -100,6 +100,8 @@ jobs:
         echo "==========================="
         pwd
         ls -l
+        ls config/
+        ls target/linux/x86/config-6.6
         echo "==========================="
         cat openwrt/.config | grep BINFMT
         echo "==========================="
