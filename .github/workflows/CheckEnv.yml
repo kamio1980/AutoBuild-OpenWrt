@@ -28,8 +28,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
       
-
-
     - name: Clone source code
       env: 
         REPO_URL: https://github.com/coolsnowwolf/lede
@@ -42,9 +40,11 @@ jobs:
     - name: Force Enable binfmt_misc in Kernel
       run: |
         echo "==========debug============"
-        ls openwrt/
+        ls -l openwrt/
+        echo "==========2nd=============="
+        cat openwrt/Config.in
         echo "==========================="
-        ls openwrt/target/linux/x86/
+        ls -l openwrt/target/linux/x86/
         echo "==========================="
         
         echo "CONFIG_EMBEDDED=y" >> openwrt/target/linux/x86/config-6.6
@@ -78,6 +78,10 @@ jobs:
         echo "CONFIG_BINFMT_SCRIPT=y" >> openwrt/target/linux/x86/config-6.12
         echo "CONFIG_X86_MSR=y" >> openwrt/target/linux/x86/config-6.12
 
+        echo "==========debug============"
+        
+        
+
     - name: Configuration Customization - Build_x86_64
       env:
         CONFIG_FILE: 'x86_64.config'
@@ -88,7 +92,7 @@ jobs:
         
         echo "==========================="
         pwd
-        ls
+        ls -l
         echo "==========================="
         cat openwrt/.config | grep BINFMT
         echo "==========================="
