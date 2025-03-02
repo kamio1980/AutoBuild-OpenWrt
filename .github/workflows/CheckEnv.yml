@@ -80,8 +80,7 @@ jobs:
       working-directory: ./openwrt
       run: |
         echo "CONFIG_IA32_EMULATION=y" >> .config
-        yes "" | make oldconfig
 
         echo "==========================="
-        cat ./.config
+        cat ./.config | grep CONFIG_IA32_EMULATION
         echo "==========================="
