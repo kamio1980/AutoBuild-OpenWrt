@@ -82,5 +82,5 @@ jobs:
         echo "CONFIG_IA32_EMULATION=y" >> .config
         make oldconfig
         echo "==========================="
-        cat ./.config | grep CONFIG_IA32_EMULATION
+        cat .config | grep CONFIG_IA32_EMULATION
         echo "==========================="
