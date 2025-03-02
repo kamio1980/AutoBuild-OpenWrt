@@ -79,10 +79,9 @@ jobs:
     - name: Apply Kernel Config and Generate Final .config
       working-directory: ./openwrt
       run: |
-        make defconfig
         echo "CONFIG_IA32_EMULATION=y" >> .config
         yes "" | make oldconfig
 
         echo "==========================="
-        cat .config | grep CONFIG_IA32_EMULATION
+        find
         echo "==========================="
