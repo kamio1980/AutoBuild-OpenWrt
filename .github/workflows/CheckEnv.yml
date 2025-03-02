@@ -83,5 +83,5 @@ jobs:
         yes "" | make oldconfig
 
         echo "==========================="
-        find
+        cat ./.config
         echo "==========================="
