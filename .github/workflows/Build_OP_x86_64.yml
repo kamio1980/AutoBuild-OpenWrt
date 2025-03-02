@@ -154,9 +154,16 @@ jobs:
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x ./customize.sh && ./customize.sh
         cd openwrt && make defconfig
-        echo "================print binfmt==============="
-        cat target/linux/x86/config-6.6 | grep BINFMT
-        echo "==================end print================"
+
+    - name: Apply Makeup of key attributes
+      working-directory: ./openwrt
+      run: |
+        echo "CONFIG_IA32_EMULATION=y" >> .config
+        echo "CONFIG_X86_X32=y" >> .config
+        echo "CONFIG_X86_32=y" >> .config
+        echo "CONFIG_X86_32_COMPAT=y" >> .config
+        echo "CONFIG_BINFMT_MISC=y" >> .config
+        yes y | make oldconfig
         
     - name: Download package
       working-directory: ./openwrt
