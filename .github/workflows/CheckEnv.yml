@@ -72,20 +72,17 @@ jobs:
         
         echo "==========================="
         pwd
-        ls -l
-        echo "==========================="
-        ls config/
-        echo "==========================="
-        ls -l target/linux/x86/
-        echo "==========6.6============="
-        cat target/linux/x86/config-6.6 | grep BINFMT
-        echo "==========6.12=============="
-        cat target/linux/x86/config-6.12 | grep BINFMT
-        echo "==========================="
-        ls -l ../
         echo "==========================="
 
-        cat .config | grep BINFMT
+
+
+    - name: Apply Kernel Config and Generate Final .config
+      working-directory: ./openwrt
+      run: |
+        make defconfig
+        echo "CONFIG_IA32_EMULATION=y" >> .config
+        yes "" | make oldconfig
+
         echo "==========================="
-        cat .config.buildinfo | grep BINFMT
-        
+        cat .config | grep CONFIG_IA32_EMULATION
+        echo "==========================="
